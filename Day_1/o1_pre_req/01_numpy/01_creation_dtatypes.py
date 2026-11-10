@@ -1,5 +1,11 @@
 '''
+What is numpy?
+Numpy is a Python library that provides support for large, multi-dimensional arrays and matrices, along with a collection of mathematical functions to operate on these arrays. It is widely used in scientific computing, data analysis, and machine learning due to its efficiency and ease of use.
 
+
+Memory Model : Continuous memory buffers enable vectorization and zero-copy slicing.
+Type Precision : Explicit allocation via `dtype` avoids dynamic type-checking overhead.
+Structured Schemas : Heterogeneous record types facilitate low-level C-struct binary parsing.
 '''
 # Create a virtual envieronment
 # python -m venv cdacvenv
@@ -31,6 +37,20 @@ actual_size = sys.getsizeof(python_list) + sum(sys.getsizeof(item) for item in p
 
 print("Python List Size: ",actual_size)
 print("Numppy Array size: ",numpy_array.nbytes)
+
+# list comprehension vs generator expression
+val = 100000
+list_comp = [val for val in range(val)]
+print("List comprehension size:", sys.getsizeof(list_comp))
+gen_exp = (val for val in range(val))
+print("Generator expression size:", sys.getsizeof(gen_exp))
+
+print("next(gen_exp) 1:", next(gen_exp))
+print("next(gen_exp) 2:", next(gen_exp))
+print("next(gen_exp) 3:", next(gen_exp))
+print("gen_exp.__next__ 4:", gen_exp.__next__())
+print("gen_exp.__next__ 5:", gen_exp.__next__())
+print("gen_exp.__next__ 6:", gen_exp.__next__())
 
 # numpy tensor initialization
 # tensor factory function
